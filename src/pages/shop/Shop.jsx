@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchProducts } from "../../products";
+import Product from "./Product";
+import "./shop.css";
 
 const Shop = () => {
   const [data, setData] = useState(null);
@@ -24,7 +26,9 @@ const Shop = () => {
       </div>
       <div className="products">
         {data?.map((product) => (
-          <div>sup</div>
+          <div>
+            <Product data={product} />
+          </div>
         ))}
       </div>
     </div>

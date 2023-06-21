@@ -4,12 +4,8 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Shop from "./pages/shop/Shop";
 import Cart from "./pages/cart/Cart";
-import { fetchProducts } from "./products";
 
 const App = () => {
-  const products = fetchProducts();
-  console.log(products);
-
   return (
     <div>
       <Router>
