@@ -17,8 +17,6 @@ const Shop = () => {
     fetchDataAsync();
   }, []);
 
-  console.log(data);
-
   return (
     <div className="shop">
       <div className="shopTitle">
