@@ -3,5 +3,3 @@ export const fetchProducts = async () => {
   const data = await (await fetch(PRODUCTS)).json();
   return data;
 };
-
-fetchProducts();
