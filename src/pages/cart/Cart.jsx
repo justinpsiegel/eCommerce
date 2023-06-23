@@ -23,7 +23,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <div>
-        <h1>Cart</h1>
+        <h1 className="text-5xl my-8">Cart</h1>
       </div>
       <div className="cartItems">
         {data?.map((product) => (
