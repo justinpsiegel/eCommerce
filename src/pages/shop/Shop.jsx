@@ -18,14 +18,22 @@ const Shop = () => {
   }, []);
 
   return (
-    <div className="shop">
-      <div className="products">
-        {data?.map((product) => (
-          <div>
-            <Product data={product} />
+    <div>
+      {data ? (
+        <div className="shop">
+          <div className="products">
+            {data.map((product) => (
+              <div>
+                <Product data={product} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          Fetching Items from the Shop...
+        </div>
+      )}
     </div>
   );
 };
