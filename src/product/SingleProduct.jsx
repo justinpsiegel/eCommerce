@@ -22,18 +22,45 @@ const SingleProduct = () => {
   const cartItemAmount = cartItems[product?.id];
 
   return (
-    <div className="product">
-      <img src={product?.image} />
-      <div className="description">
-        <p>
-          <b>{product?.title}</b>
-        </p>
-        <p>${product?.price}</p>
-      </div>
-      <button className="addToCartBttn" onClick={() => addToCart(product?.id)}>
-        Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
-      </button>
-      {localStorage.setItem("cart", JSON.stringify(cartItems))}
+    <div>
+      {product ? (
+        <div>
+          <h2 className="m-8 my-24 text-4xl">{product.title}</h2>
+          <div className="singleProduct flex">
+            <img
+              className="border-solid border-8 border-black rounded p-8 bg-white h-[500px]"
+              src={product.image}
+            />
+            <div className="flex flex-col m-4 w-screen">
+              <div className="description">
+                <p className="text-2xl my-8 w-[1000px]">
+                  {product.description}
+                </p>
+                <p className="text-xl my-8">
+                  <b>Price:</b> ${product.price}
+                </p>
+                <p className="text-xl my-8">
+                  <b>Category: </b>
+                  {product.category}
+                </p>
+                <p className="text-xl my-8">
+                  <b>Rating:</b> {product.rating.rate}/5 ({product.rating.count}{" "}
+                  Customer Reviews)
+                </p>
+              </div>
+              <button
+                className="addToCartBttn my-8 w-[150px]"
+                onClick={() => addToCart(product.id)}
+              >
+                Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
+              </button>
+            </div>
+            {localStorage.setItem("cart", JSON.stringify(cartItems))}
+          </div>
+        </div>
+      ) : (
+        <div>Fetching Product...</div>
+      )}
     </div>
   );
 };

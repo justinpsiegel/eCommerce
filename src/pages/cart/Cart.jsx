@@ -4,12 +4,16 @@ import Product from "../shop/Product";
 import { ShopContext } from "../../context/ShopContext";
 import CartItem from "./CartItem";
 import "./cart.css";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [data, setData] = useState(null);
-  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount, checkoutCart } =
+    useContext(ShopContext);
+
+  const [totalAmount, setTotalAmount] = useState(getTotalCartAmount);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -35,18 +39,30 @@ const Cart = () => {
             {data?.map((product) => (
               <div>
                 {cartItems[product.id] !== 0 ? (
-                  <CartItem data={product} />
+                  <CartItem data={product} setTotalAmount={setTotalAmount} />
                 ) : (
                   <></>
                 )}
               </div>
             ))}
           </div>
-          {getTotalCartAmount > 0 ? (
+          {totalAmount > 0 ? (
             <div className="checkout">
-              <p>Subtotal: ${getTotalCartAmount}</p>
-              <button onClick={() => navigate("/")}>Continue Shopping</button>
-              <button>Checkout</button>
+              <p>Subtotal: ${totalAmount}</p>
+              <button
+                className="hover:bg-[#6495ED] transition-all"
+                onClick={() => navigate("/")}
+              >
+                Continue Shopping
+              </button>
+              <Link to="/">
+                <button
+                  onClick={() => checkoutCart()}
+                  className="hover:bg-[#6495ED] transition-all"
+                >
+                  Checkout
+                </button>
+              </Link>
             </div>
           ) : (
             <div>Your Cart is empty</div>

@@ -9,10 +9,13 @@ const Product = (props) => {
   const cartItemAmount = cartItems[id];
 
   return (
-    <div className="product">
+    <div className="product flex flex-col">
       <Link to={`/${id}`}>
-        <img src={image} />
-        <div className="description">
+        <img
+          className="border-solid border-8 border-black rounded p-8 bg-white"
+          src={image}
+        />
+        <div className="description hover:text-[blue] transition-all">
           <p>
             <b>{title}</b>
           </p>
