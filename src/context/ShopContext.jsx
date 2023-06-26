@@ -38,7 +38,6 @@ const ShopContextProvider = (props) => {
           let itemInfo = fetchedData?.find(
             (product) => product.id === Number(item)
           );
-          console.log(itemInfo);
           totalAmount += cartItems[item] * itemInfo.price;
         }
       }
