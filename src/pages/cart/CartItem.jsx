@@ -21,7 +21,7 @@ const CartItem = (props, { setTotalAmount }) => {
         <p>
           <b className="m-4">{title}</b>
         </p>
-        <p className="m-4">${price}</p>
+        <p className="m-4">${price.toFixed(2)}</p>
         <div className="countHandler m-4">
           <button
             onClick={() => removeFromCart(id)}

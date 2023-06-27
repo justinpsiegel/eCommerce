@@ -37,7 +37,7 @@ const SingleProduct = () => {
                   {product.description}
                 </p>
                 <p className="text-xl my-8">
-                  <b>Price:</b> ${product.price}
+                  <b>Price:</b> ${product.price.toFixed(2)}
                 </p>
                 <p className="text-xl my-8">
                   <b>Category: </b>

@@ -19,7 +19,7 @@ const Product = (props) => {
           <p>
             <b>{title}</b>
           </p>
-          <p>${price}</p>
+          <p>${price.toFixed(2)}</p>
         </div>
       </Link>
       <button className="addToCartBttn" onClick={() => addToCart(id)}>

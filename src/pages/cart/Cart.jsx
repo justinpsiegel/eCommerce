@@ -15,6 +15,13 @@ const Cart = () => {
 
   const [totalAmount, setTotalAmount] = useState(getTotalCartAmount);
 
+  let cartIsEmpty = true;
+  for (const item in cartItems) {
+    if (cartItems[item] > 0) {
+      cartIsEmpty = false;
+    }
+  }
+
   useEffect(() => {
     const fetchDataAsync = async () => {
       try {
@@ -46,9 +53,9 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          {totalAmount > 0 ? (
+          {!cartIsEmpty ? (
             <div className="checkout">
-              <p>Subtotal: ${totalAmount}</p>
+              {/* <p>Subtotal: ${totalAmount.toFixed(2)}</p> */}
               <button
                 className="hover:bg-[#6495ED] transition-all"
                 onClick={() => navigate("/")}
