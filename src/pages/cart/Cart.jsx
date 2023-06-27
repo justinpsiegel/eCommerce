@@ -30,8 +30,10 @@ const Cart = () => {
       } catch (error) {}
     };
 
+    setTotalAmount(getTotalCartAmount);
+
     fetchDataAsync();
-  }, []);
+  }, [cartItems]);
 
   const navigate = useNavigate();
 
@@ -55,7 +57,7 @@ const Cart = () => {
           </div>
           {!cartIsEmpty ? (
             <div className="checkout">
-              {/* <p>Subtotal: ${totalAmount.toFixed(2)}</p> */}
+              <p>Subtotal: ${totalAmount.toFixed(2)}</p>
               <button
                 className="hover:bg-[#6495ED] transition-all"
                 onClick={() => navigate("/")}
